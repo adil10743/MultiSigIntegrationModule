@@ -1,8 +1,9 @@
 //src/hooks/useWalletLogin.ts
+import { useEffect, useState } from "react";
 import { useXPortalConnect } from "./useXPortalLogin";
 import { useDefiExtensionLogin } from "./useDefiExtensionLogin";
 import { useWebWalletLogin } from "./useWebWalletLogin";
-import { useEffect, useState } from "react";
+import { useWalletContext } from "../context/walletContext";
 
 export const useWalletLogin = () => {
   const xportal = useXPortalConnect();
@@ -10,14 +11,14 @@ export const useWalletLogin = () => {
   const web = useWebWalletLogin();
 
   const [loginMethod, setLoginMethod] = useState<string | null>(
-    localStorage.getItem("loginMethod")
+    localStorage.getItem("loginMethod"  )
   );
 
-  const address = xportal.address || defi.address || web.address;
+  const { address, setAddress } = useWalletContext();
   const uri = xportal.uri ?? undefined;
   const isLoggedIn = !!address;
 
-  const connectXPortal = async () => {
+  const connectXPortal = async () => {      
     await xportal.login();
     setLoginMethod("xportal");
     localStorage.setItem("loginMethod", "xportal");

@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "esnext",
+      "module": "esnext",
+      "jsx": "react-jsx",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "strict": false,
+      "allowJs": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "skipLibCheck": true,
+      "types": ["vite/client"]
+    },
+    "include": ["src", "src/types"]
+  }
+  

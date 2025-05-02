@@ -7,12 +7,15 @@ import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
   plugins: [
-    svgr({
-      exportAsDefault: false, // Enable named `ReactComponent` imports
-    }),
     react(),
     tailwindcss(),
     basicSsl(),
+    svgr({
+      include: '**/*.svg',
+      svgrOptions: {
+        exportType: 'default',
+      },
+    }),
   ],
   define: {
     global: 'globalThis',

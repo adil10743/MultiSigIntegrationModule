@@ -1,8 +1,8 @@
-// src/components/Navbar.tsx
+// src/pages/Navbar.tsx
 import React, { useRef, useState, useEffect } from "react";
 import { useWalletLogin } from "../hooks/useWalletLogin";
-import ConnectWalletModal from "./connectWalletModal";
-import AccountModal from "./accountModal";
+import ConnectWalletModal from "../components/connectWalletModal";
+import AccountModal from "../components/accountModal";
 
 const Navbar: React.FC = () => {
   const {

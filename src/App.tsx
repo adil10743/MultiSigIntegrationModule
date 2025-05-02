@@ -1,6 +1,7 @@
+// src/App.tsx
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navbar";
+import Navbar from "./pages/navbar";
 import SwapForm from "./pages/swapForm";
 import { useWalletLogin } from "./hooks/useWalletLogin";
 import "./index.css";

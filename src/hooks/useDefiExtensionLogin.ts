@@ -4,7 +4,7 @@ import { ExtensionProvider } from "@multiversx/sdk-extension-provider";
 import { useWalletContext } from "../context/walletContext";
 
 export const useDefiExtensionLogin = () => {
-  const {address, setAddress} = useWalletContext()
+  const [address, setAddress] = useState<string | null>(null);
   const providerRef = useRef<ExtensionProvider | null>(null);
 
   const login = async () => {

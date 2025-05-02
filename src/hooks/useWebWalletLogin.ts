@@ -10,7 +10,7 @@ import qs from "qs"; // for cleaner parsing
 import { useWalletContext } from "../context/walletContext";
 
 export const useWebWalletLogin = () => {
-  const { address, setAddress } = useWalletContext();
+  const [address, setAddress] = useState<string | null>(null);
   const { chain } = useChain();
 
   const provider = new WalletProvider(

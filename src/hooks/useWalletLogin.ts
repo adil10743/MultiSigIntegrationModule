@@ -14,7 +14,7 @@ export const useWalletLogin = () => {
     localStorage.getItem("loginMethod"  )
   );
 
-  const { address, setAddress } = useWalletContext();
+  const address = xportal.address || defi.address || web.address;
   const uri = xportal.uri ?? undefined;
   const isLoggedIn = !!address;
 

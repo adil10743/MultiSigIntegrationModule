@@ -50,7 +50,7 @@ const ConnectWalletModal: React.FC<Props> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center font-sans">
+    <div className="fixed inset-0 z-50 bg-white bg-opacity-60 flex items-center justify-center font-sans">
       <div
         className="bg-gray-900 text-white rounded-xl p-6 w-full max-w-md shadow-lg relative"
         style={{

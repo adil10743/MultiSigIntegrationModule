@@ -8,7 +8,7 @@ const projectId = "9b1a9564f91cb659ffe21b73d5c4e2d8";
 const relayUrl = "wss://relay.walletconnect.com";
 
 export const useXPortalConnect = () => {
-  const { address, setAddress } = useWalletContext()
+  const [address, setAddress] = useState<string | null>(null);
   const [uri, setUri] = useState<string | null>(null);
   const providerRef = useRef<WalletConnectV2Provider | null>(null);
   const { chain } = useChain();

@@ -3,12 +3,19 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 import basicSsl from '@vitejs/plugin-basic-ssl';
+import svgr from 'vite-plugin-svgr';
 
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
     basicSsl(),
+    svgr({
+      include: '**/*.svg',
+      svgrOptions: {
+        exportType: 'default',
+      },
+    }),
   ],
   define: {
     global: 'globalThis',
@@ -37,5 +44,5 @@ export default defineConfig({
       "Access-Control-Allow-Headers": "*",
       "Content-Security-Policy": "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:",
     },
-  },  
+  },
 });

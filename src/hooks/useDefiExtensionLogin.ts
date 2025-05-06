@@ -1,6 +1,7 @@
 // src/hooks/useDefiExtensionLogin.ts
 import { useEffect, useState, useRef } from "react";
 import { ExtensionProvider } from "@multiversx/sdk-extension-provider";
+import { useWalletContext } from "../context/walletContext";
 
 export const useDefiExtensionLogin = () => {
   const [address, setAddress] = useState<string | null>(null);

@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { WalletConnectV2Provider } from "@multiversx/sdk-wallet-connect-provider";
 import { useChain } from "../context/chainContext";
+import { useWalletContext } from "../context/walletContext";
 
 const projectId = "9b1a9564f91cb659ffe21b73d5c4e2d8";
 const relayUrl = "wss://relay.walletconnect.com";

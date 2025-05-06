@@ -12,29 +12,34 @@ export async function getSwapTransaction({
   toToken,
   amount,
   senderAddress,
+  slippage,
   currentChain,
+  warningOverride,
 }: {
   fromToken: string;
   toToken: string;
   amount: number;
   senderAddress: string;
+  slippage: number;
   currentChain: ChainId.Devnet | ChainId.Mainnet;
+  warningOverride?: string;
 }) {
-  
   console.log(fromToken, toToken, amount, senderAddress);
-  console.log("Active Chain:", "M");//currentChain);
+  console.log("Active Chain:",currentChain);
+  
   const agService = new Aggregator({
-    chainId: "D",//currentChain,
+    chainId: currentChain,
     // protocol: DEV_Address, // optional fee sharing
   });
 
   const amountBaseUnits = new BigNumber(amount).multipliedBy(1e18);
+  const slippageBasisPoints = Math.round(slippage * 100);
 
   const { sorResponse, getInteraction } = await agService.aggregate(
     fromToken,
     toToken,
     amountBaseUnits,
-    100 // 0.1% slippage
+    slippageBasisPoints
   );
 
   if (sorResponse.warning) {
@@ -57,7 +62,7 @@ export async function getSwapTransaction({
 
   // Always show modal for confirmation
   const confirmed = await openSwapModal(
-    sorResponse.warning ?? "Review your swap",
+    warningOverride ?? sorResponse.warning ?? "Review your swap",
     {
       returnAmount: sorResponse.returnAmount,
       minReturnAmount: sorResponse.minReturnAmount,

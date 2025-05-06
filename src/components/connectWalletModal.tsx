@@ -1,11 +1,11 @@
 //src/components/connectWalletModal.tsx
 import React from "react";
 import { QRCodeSVG } from "qrcode.react";
-import connectWalletBg from "../assets/images/connect-wallet-bg.png";
+import { safeImport } from "../utils/safeImport";
 import ICConnectApp from "../assets/svg/connect-app.svg";
 import ICConnectExtension from "../assets/svg/connect-extension.svg";
 import ICConnectWebWallet from "../assets/svg/connect-web-wallet.svg";
-
+const connectWalletBg = safeImport("../assets/images/connect-wallet-bg.png");
 type Props = {
   isOpen: boolean;
   onClose: () => void;
@@ -50,9 +50,10 @@ const ConnectWalletModal: React.FC<Props> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-white bg-opacity-60 flex items-center justify-center font-sans">
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center font-sans">
       <div
-        className="bg-gray-900 text-white rounded-xl p-6 w-full max-w-md shadow-lg relative"
+        //background should be white so QR code is easily visible
+        className="bg-white text-black rounded-xl p-6 w-full max-w-md shadow-lg relative"
         style={{
           backgroundImage: `url(${connectWalletBg})`,
           backgroundRepeat: "no-repeat",
@@ -76,7 +77,7 @@ const ConnectWalletModal: React.FC<Props> = ({
             <div className="flex justify-center mb-4">
               <QRCodeSVG value={uri} size={180} />
             </div>
-            <p className="text-center text-sm text-gray-300 mb-4">
+            <p className="text-center text-sm text-gray-500 mb-4">
               Scan this QR code using your{" "}
               <span className="text-blue-400 font-semibold">xPortal app</span>
             </p>
@@ -129,7 +130,7 @@ const WalletButton = ({
 }) => (
   <button
     onClick={onClick}
-    className="w-full flex items-center bg-gray-800 hover:bg-gray-700 rounded-lg px-4 py-3"
+    className="w-full flex items-center bg-gray-600 hover:bg-gray-500 rounded-lg px-4 py-3"
   >
     <div className="mr-4">{icon}</div>
     <div className="text-left">

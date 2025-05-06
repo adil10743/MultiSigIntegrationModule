@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useXPortalConnect } from "./useXPortalLogin";
 import { useDefiExtensionLogin } from "./useDefiExtensionLogin";
 import { useWebWalletLogin } from "./useWebWalletLogin";
-import { useWalletContext } from "../context/walletContext";
 
 export const useWalletLogin = () => {
   const xportal = useXPortalConnect();
